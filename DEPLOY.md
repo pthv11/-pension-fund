@@ -45,7 +45,7 @@
    - **Branch**: `main` (или ваша основная ветка)
    - **Root Directory**: Оставьте пустым (корень проекта)
    - **Runtime**: `Node`
-   - **Build Command**: `npm install && npm run build`
+   - **Build Command**: `NPM_CONFIG_PRODUCTION=false npm install && npm run build`
    - **Start Command**: `npm start`
    - **Plan**: `Free` (для начала)
 
