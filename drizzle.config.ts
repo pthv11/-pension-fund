@@ -16,7 +16,11 @@ export default {
         database: parsed.database || "pension_optimizer",
         user: parsed.user || "postgres",
         password: parsed.password || "",
-        ssl: process.env.DB_SSL === "true"
+        ssl: process.env.DB_SSL === "true" || process.env.DATABASE_URL?.includes('render.com') ? {
+        rejectUnauthorized: false
+      } : false || process.env.DATABASE_URL?.includes('render.com') ? {
+          rejectUnauthorized: false
+        } : false
       };
     }
     return {
@@ -25,7 +29,11 @@ export default {
       database: process.env.DB_NAME || "pension_optimizer",
       user: process.env.DB_USER || "postgres",
       password: process.env.DB_PASSWORD || "",
-      ssl: process.env.DB_SSL === "true"
+      ssl: process.env.DB_SSL === "true" || process.env.DATABASE_URL?.includes('render.com') ? {
+        rejectUnauthorized: false
+      } : false || process.env.DATABASE_URL?.includes('render.com') ? {
+        rejectUnauthorized: false
+      } : false
     };
   })(),
   verbose: true,
