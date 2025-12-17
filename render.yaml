@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: pension-fund
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_SSL
+        value: 'true'
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_DEFAULT_EMAIL
+        value: admin@pension.ru
+      - key: ADMIN_DEFAULT_PASSWORD
+        value: admin123
+    healthCheckPath: /
+
+databases:
+  - name: pension-fund-db
+    plan: free
+    databaseName: pension_fund
+    user: pension_user
+
